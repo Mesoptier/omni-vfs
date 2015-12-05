@@ -7,10 +7,7 @@
   "main": "src/index.js",
   "dependencies": {
     "async": "^1.5.0",
-    "bluebird": "^3.0.6",
-    "eventemitter2": "^0.4.14",
-    "jsftp": "^1.5.3",
-    "mime-types": "^2.1.8"
+    "eventemitter2": "^0.4.14"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.6",
