@@ -1,8 +1,14 @@
-Omni - Virtual File System
-==========================
+# omni-vfs
 
-Interface
----------
+> Omni, a virtual file system.
+
+This package only includes the base classes for the virtual file systems, you need to install one (or more) of the various [implementations](#implementations) before you can start using Omni.
+
+## API
+
+### Class: `OmniBase`
+
+*This is an abstract base class, you need to install one of the [implementations](#implementations) to use these methods*
 
 ##### `readdir(path: string) → Promise.<Array.<string>>`
 Read the contents of a directory, returns an array of filenames.
@@ -28,6 +34,13 @@ Recursively walk over the nodes in a directory.
 * `.on('end', function())`
 * `.on('error', function(error: Error))`
 
+###### Example
+```javascript
+const walker = vfs.walk('base/directory');
+walker.on('directory', (path) => console.log(path));
+walker.on('end', () => console.log('ended'));
+```
+
 ### Class: `Stats`
 
 ##### `type: string`
@@ -46,7 +59,7 @@ Whether the node is a file, simply a convenience method for checking `type == 'f
 Implementations
 ---------------
 
-* omni-vfs-local
+* [omni-vfs-local](https://github.com/Mesoptier/omni-vfs-local) - Local file system, using node's `fs`.
 * omni-vfs-ftp
 
 
