@@ -1,15 +1,17 @@
-import { Walker } from './walker';
+import Walker from './walker';
 
 /**
  * This is the base file system class. Other virtual file system implementations
  * need to extend this one.
+ *
+ * @class OmniBase
  */
 export default class OmniBase {
 
   /**
-   * Recursively walk through the virtual file system.
+   * Recursively walks through the virtual file system.
    *
-   * @param  {string} path    The path in which the walker should start.
+   * @param  {String} path    The path in which the walker should start.
    * @param  {Object} options Options object, see {@link Walker#constructor}.
    * @return {EventEmitter2}
    */
@@ -18,6 +20,13 @@ export default class OmniBase {
   }
 
   /*eslint-disable no-unused-vars */
+
+  /**
+   * Reads the contents of a directory.
+   *
+   * @param  {String} path [description]
+   * @return {Promise}      [description]
+   */
   readdir(path) {
     throw new Error('not implemented');
   }
@@ -29,15 +38,18 @@ export default class OmniBase {
   stat(path) {
     throw new Error('not implemented');
   }
+
   /*eslint-enable no-unused-vars */
 
   /**
-   * Get the type of a node. Normally this is a shorthand for doing
-   * `vfs.stat(path).then((stats) => stats.type)`, but other VFS implementations
-   * can override this for better efficiency.
+   * Get the type of a node.
    *
-   * @param  {string} path Path to the node.
-   * @return {string}      Type of the node (`file`, `directory`, etc.)
+   * Normally this is a shorthand for doing <code>vfs.stat(path).then((stats) => stats.type)</code>.
+   * But this behaviour can be overriden by other VFS implementations for
+   * efficiency reasons.
+   *
+   * @param  {String} path Path to the node.
+   * @return {Promise.<String>}      Type of the node (`file`, `directory`, etc.)
    */
   statType(path) {
     return this.stat(path).then((stats) => stats.type);

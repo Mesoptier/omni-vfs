@@ -2,22 +2,17 @@ import async from 'async';
 import mpath from 'path';
 import { EventEmitter2 as EventEmitter } from 'eventemitter2';
 
-/**
- * Walker class used for recursively walking through a virtual file system.
- *
- * @class
- */
 export default class Walker extends EventEmitter {
 
   /**
    * Walker constructor.
    *
    * @param {OmniBase} vfs   Virtual file system to walk over.
-   * @param {string}   path  The path in which the walker should start.
+   * @param {String}   path  The path in which the walker should start.
    * @param {Object}   [options={}]
-   * @param {Function} options.shouldStat
-   * @param {Function} options.shouldEnter
-   * @param {number}   options.concurrency
+   * @param {Function} [options.shouldStat]
+   * @param {Function} [options.shouldEnter]
+   * @param {number}   [options.concurrency]
    *
    * @fires Walker#event:file
    * @fires Walker#event:directory
@@ -28,7 +23,7 @@ export default class Walker extends EventEmitter {
     this.vfs = vfs;
     this.path = path;
 
-    let {
+    let {                       // DEFAULT OPTIONS:
       shouldStat = () => true,  // Make a stat call for every node
       shouldEnter = () => true, // Enter every directory
       concurrency = 1           // Process one node at a time
@@ -56,7 +51,7 @@ export default class Walker extends EventEmitter {
    * Reads the contents of a directory and fires the appropriate events for each
    * node it finds. Other directories that are found are added to the queue.
    *
-   * @param  {string}   path     The path in the VFS to the directory.
+   * @param  {String}   path     The path in the VFS to the directory.
    * @param  {Function} callback Callback function to be called when we're done.
    * @private
    */
