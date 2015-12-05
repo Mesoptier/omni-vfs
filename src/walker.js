@@ -1,22 +1,9 @@
 import async from 'async';
 import mpath from 'path';
-import { EventEmitter2 as EventEmitter } from 'eventemitter2';
+import { EventEmitter2 } from 'eventemitter2';
 
-export default class Walker extends EventEmitter {
+export default class Walker extends EventEmitter2 {
 
-  /**
-   * Walker constructor.
-   *
-   * @param {OmniBase} vfs   Virtual file system to walk over.
-   * @param {String}   path  The path in which the walker should start.
-   * @param {Object}   [options={}]
-   * @param {Function} [options.shouldStat]
-   * @param {Function} [options.shouldEnter]
-   * @param {number}   [options.concurrency]
-   *
-   * @fires Walker#event:file
-   * @fires Walker#event:directory
-   */
   constructor(vfs, path, options = {}) {
     super();
 
@@ -46,15 +33,7 @@ export default class Walker extends EventEmitter {
     // Push the initial path on the queue
     this.queue.push(this.path);
   }
-
-  /**
-   * Reads the contents of a directory and fires the appropriate events for each
-   * node it finds. Other directories that are found are added to the queue.
-   *
-   * @param  {String}   path     The path in the VFS to the directory.
-   * @param  {Function} callback Callback function to be called when we're done.
-   * @private
-   */
+  
   _walk(path, callback) {
     this.vfs
       // Read the contents of the directory and loop over the file names

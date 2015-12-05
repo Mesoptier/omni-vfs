@@ -1,5 +1,5 @@
 export default class Stats {
-
+  
   constructor({ type, mime }) {
     this.type = type;
     this.mime = mime;
