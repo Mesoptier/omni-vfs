@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-$ npm install omni
+$ npm install omni-vfs
 ```
 
 > This package only includes the base classes for the virtual file systems, you need to install one (or more) of the various [implementations](#implementations) before you can start using Omni.
