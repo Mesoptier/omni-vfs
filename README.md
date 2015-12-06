@@ -14,7 +14,7 @@ $ npm install omni-vfs
 
 ### Class: `OmniBase`
 
-*This is an abstract base class, you need to install one of the [implementations](#implementations) to use these methods*
+> This is an abstract base class, you need to install one of the [implementations](#implementations) to use these methods.
 
 ##### `readdir(path: string) → Promise.<Array.<string>>`
 Read the contents of a directory, returns an array of filenames.
