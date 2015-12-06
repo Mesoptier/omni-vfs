@@ -1,15 +1,20 @@
 export default class Stats {
-  
-  constructor({ type, mime }) {
-    this.type = type;
-    this.mime = mime;
+
+  constructor(stats) {
+    this.type = stats.type;
+    this.mime = stats.mime;
+
+    delete stats.type;
+    delete stats.mime;
+
+    Object.assign(this, stats);
   }
 
-  get isFile() {
+  isFile() {
     return this.type === 'file';
   }
 
-  get isDirectory() {
+  isDirectory() {
     return this.type === 'directory';
   }
 

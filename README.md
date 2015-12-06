@@ -55,11 +55,11 @@ The type of the node, either `file` or `directory`.
 ##### `mime: string`
 The MIME type of the node. Note that the value of this is up to the VFS implementation.
 
-##### `isDirectory: boolean`
-Whether the node is a directory, simply a convenience method for checking `type == 'directory'`.
+##### `isDirectory() → boolean`
+Whether the node is a directory, simply a convenience method for checking `type === 'directory'`.
 
-##### `isFile: boolean`
-Whether the node is a file, simply a convenience method for checking `type == 'file'`.
+##### `isFile() → boolean`
+Whether the node is a file, simply a convenience method for checking `type === 'file'`.
 
 
 Implementations
