@@ -1,7 +1,7 @@
 {
   "name": "omni-vfs",
   "description": "Omni, a virtual file system.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "test": "mocha test --compilers js:babel-register"
   },
