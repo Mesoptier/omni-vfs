@@ -1,3 +1,5 @@
+import mimeTypes from 'mime-types';
+
 export default class Stats {
 
   constructor(stats) {
@@ -16,6 +18,10 @@ export default class Stats {
 
   isDirectory() {
     return this.type === 'directory';
+  }
+
+  static lookupMimeType(filename) {
+    return mimeTypes.lookup(filename);
   }
 
 }
