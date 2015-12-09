@@ -19,7 +19,7 @@ export function omniBaseTest({ name, impl, init, mock }) {
     before(() => {
       // Install mock data
       mock.install(tree((f, d, s) => {
-        return {
+        return d({
           'readdir': d({
             'empty-dir': d({}),
             'directory': d({
@@ -36,7 +36,7 @@ export function omniBaseTest({ name, impl, init, mock }) {
           'stat': d({
             'file.txt': f('content', { mode: '0777' })
           })
-        };
+        });
       }));
 
       // Initiate the VFS
